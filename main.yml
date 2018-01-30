@@ -1,0 +1,20 @@
+---
+- hosts: tomcat
+  gather_facts: false
+  become: true
+  remote_user: it
+
+  vars:
+    hostname: "_mac"
+
+  vars_files:
+    - vars/common.yml
+
+  pre_tasks:
+    - name: pre
+      shell: echo "pre..."
+  post_tasks:
+    - name: post
+      shell: echo "post..."
+  roles:
+    - tomcat

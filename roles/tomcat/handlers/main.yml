@@ -1,0 +1,10 @@
+#- name: stop jboss
+#  service: name={{ jboss_service_name }} state=stopped
+#- name: start jboss
+#  service: name={{ jboss_service_name }} state=started
+- name: stop jboss
+  command: /etc/init.d/tomcat stop
+- name: pause jboss
+  pause: seconds=10 prompt="Restarting"
+- name: start jboss
+  command: /etc/init.d/tomcat start

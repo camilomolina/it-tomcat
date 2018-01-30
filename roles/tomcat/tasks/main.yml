@@ -1,0 +1,32 @@
+- name: copy run
+  copy: src={{item.src}} dest={{item.dest}} mode=0755 group=tomcat owner=tomcat
+  with_items:
+    - {src: files/bin/catalina.sh, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/bin/catalina.sh}
+    - {src: files/bin/startup.sh, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/bin/startup.sh}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
+
+- name: copy conf
+  copy: src={{item.src}} dest={{item.dest}} mode=0644 group=tomcat owner=tomcat
+  with_items:
+    - {src: files/conf/catalina.properties, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/conf/catalina.properties}
+    - {src: files/conf/server.xml, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/conf/server.xml}
+    - {src: files/conf/tomcat-users.xml, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/conf/tomcat-users.xml}
+    - {src: files/conf/Catalina/localhost/manager.xml, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/conf/Catalina/localhost/manager.xml}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
+
+- name: copy lib
+  copy: src={{item.src}} dest={{item.dest}} mode=0644 group=tomcat owner=tomcat
+  with_items:
+    - {src: files/lib/jcifs.jar, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/lib/jcifs.jar}
+    - {src: files/lib/jtds-1.2.5.jar, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/lib/jtds-1.2.5.jar}
+    - {src: files/lib/tomcat-sha1-1.0-SNAPSHOT.jar, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/lib/tomcat-sha1-1.0-SNAPSHOT.jar}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
