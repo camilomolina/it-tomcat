@@ -43,17 +43,17 @@
               description="User database that can be updated and saved"
               factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
               pathname="conf/tomcat-users.xml" />
-			  
+
 	<Resource name="jdbc/ReportDS"
               global="jdbc/ReportDS"
               factory="cl.bennu.encrypt.BasicDataSourceFactory"
               auth="Container"
-              type="javax.sql.DataSource"             
+              type="javax.sql.DataSource"
               username="sa"
               password="9e29099348b2ee47e81bd71baa154ccd"
               driverClassName="net.sourceforge.jtds.jdbc.Driver"
               description="SQLServer database."
-              url="jdbc:jtds:sqlserver://localhost:1433/SMHE"
+              url="jdbc:jtds:sqlserver://10.96.0.40:1433/SMHE"
               maxTotal="10"
               maxIdle="10"
               maxWaitMillis="10000"
@@ -63,7 +63,7 @@
 			  />
 
 
-			  
+
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
@@ -164,16 +164,16 @@
         <!-- This Realm uses the UserDatabase configured in the global JNDI
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
-             available for use by the Realm.  
+             available for use by the Realm.
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
                resourceName="UserDatabase"/>
 		-->
-			   
+
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
                resourceName="UserDatabase" >
 			<CredentialHandler className="org.apache.catalina.realm.MessageDigestCredentialHandler" algorithm="sha-1" />
 		</Realm>
-		
+
       </Realm>
 
       <Host name="localhost"  appBase="webapps"
