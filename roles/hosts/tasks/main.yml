@@ -1,0 +1,3 @@
+---
+- name: Update /etc/hosts
+  lineinfile: dest=/etc/hosts line='10.96.0.204\tt4' owner=root group=root mode=0644 state=present
