@@ -1,4 +1,4 @@
 ---
 timezone: America/Santiago
 remote_user: it
-jboss_service_name: jboss
+tomcat_service_name: tomcat

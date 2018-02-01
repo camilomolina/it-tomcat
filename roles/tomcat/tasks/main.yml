@@ -4,9 +4,9 @@
     - {src: files/bin/catalina.sh, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/bin/catalina.sh}
     - {src: files/bin/startup.sh, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/bin/startup.sh}
   notify:
-    - stop jboss
-    - pause jboss
-    - start jboss
+    - stop tomcat
+    - pause tomcat
+    - start tomcat
 
 - name: copy conf
   copy: src={{item.src}} dest={{item.dest}} mode=0644 group=tomcat owner=tomcat
@@ -17,9 +17,9 @@
     - {src: files/conf/Catalina/localhost/manager.xml, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/conf/Catalina/localhost/manager.xml}
     - {src: files/etc/, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/etc/}
   notify:
-    - stop jboss
-    - pause jboss
-    - start jboss
+    - stop tomcat
+    - pause tomcat
+    - start tomcat
 
 - name: copy lib
   copy: src={{item.src}} dest={{item.dest}} mode=0644 group=tomcat owner=tomcat
@@ -28,6 +28,6 @@
     - {src: files/lib/jtds-1.2.5.jar, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/lib/jtds-1.2.5.jar}
     - {src: files/lib/tomcat-sha1-1.0-SNAPSHOT.jar, dest: /usr/local/bin/apache-tomcat-9.0.0.M26/lib/tomcat-sha1-1.0-SNAPSHOT.jar}
   notify:
-    - stop jboss
-    - pause jboss
-    - start jboss
+    - stop tomcat
+    - pause tomcat
+    - start tomcat
