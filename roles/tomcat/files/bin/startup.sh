@@ -19,6 +19,9 @@
 # Start Script for the CATALINA Server
 # -----------------------------------------------------------------------------
 
+export JAVA_OPTS="-Xms512m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m $JAVA_OPTS"
+
+
 # Better OS/400 detection: see Bugzilla 31132
 os400=false
 case "`uname`" in
